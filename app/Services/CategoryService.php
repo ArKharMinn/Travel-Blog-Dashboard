@@ -15,6 +15,6 @@ class CategoryService
 
     public function category(Request $request)
     {
-        return Post::with('category')->with('comment')->where('category_id', $request->id)->get();
+        return Post::with('category')->where('category_id', $request->id)->get();
     }
 }
