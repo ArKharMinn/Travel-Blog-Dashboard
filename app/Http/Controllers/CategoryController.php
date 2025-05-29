@@ -14,6 +14,21 @@ class CategoryController extends Controller
         $this->service = $service;
     }
 
+    public function category(Request $request)
+    {
+        try {
+            $data = $this->service->category($request);
+            return response()->json([
+                'message' => 'success',
+                'data' => $data
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
     public function index()
     {
         try {

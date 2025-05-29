@@ -14,7 +14,7 @@ class PostService
 
     public function detail(Request $request)
     {
-        return Post::with('category')->find($request->id);
+        return Post::with('category')->with('comments')->with('comments.user')->find($request->id);
     }
 
     public function search(Request $request)
