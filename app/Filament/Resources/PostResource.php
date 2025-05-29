@@ -38,7 +38,6 @@ class PostResource extends Resource
                             ->directory('post/images')
                             ->disk('public')
                             ->imageEditor()
-                            ->getUploadedFileNameForStorageUsing(fn() => 'post_' . Carbon::now()->format('Y-m-d'))
                             ->imageResizeTargetWidth(800)
                             ->imageResizeTargetHeight(500)
                             ->maxSize(2048)
