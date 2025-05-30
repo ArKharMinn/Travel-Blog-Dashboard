@@ -24,6 +24,7 @@ Route::prefix('post')->group(function () {
     Route::get('index', [PostController::class, 'index']);
     Route::post('search', [PostController::class, 'search']);
     Route::post('detail', [PostController::class, 'detail']);
+    Route::get('about', [PostController::class, 'about']);
 });
 
 Route::prefix('comment')->middleware('auth:sanctum')->group(function () {

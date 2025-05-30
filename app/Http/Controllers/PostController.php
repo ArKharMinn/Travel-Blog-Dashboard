@@ -47,7 +47,22 @@ class PostController extends Controller
     public function search(Request $request)
     {
         try {
-            $data = $this->service->detail($request);
+            $data = $this->service->search($request);
+            return response()->json([
+                'message' => 'success',
+                'data' => $data
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
+    public function about()
+    {
+        try {
+            $data = $this->service->about();
             return response()->json([
                 'message' => 'success',
                 'data' => $data

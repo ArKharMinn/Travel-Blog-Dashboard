@@ -14,11 +14,20 @@ class PostService
 
     public function detail(Request $request)
     {
-        return Post::with('category')->with('comments')->with('comments.user')->find($request->id);
+        return Post::with(['category', 'comments', 'comments.user'])->find($request->id);
     }
 
     public function search(Request $request)
     {
         return Post::with('category')->where('title', 'like', '%' . $request->search . '%');
+    }
+
+    public function about()
+    {
+        return Post::where('status', 'active')
+            ->with('category')
+            ->latest()
+            ->take(3)
+            ->get();
     }
 }
